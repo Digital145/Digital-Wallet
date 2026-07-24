@@ -124,7 +124,7 @@ Login
 <input id="password" type="password" placeholder="Password">
 
 
-<button id="loginSubmit">
+<button id="loginSubmit" onclick="loginUser()">
 Login
 </button>
 
@@ -157,7 +157,7 @@ Create Your Account
 <input id="confirm" type="password" placeholder="Confirm Password">
 
 
-<button id="createBtn">
+<button id="createBtn" onclick="registerUser()">
 Create Account
 </button>
 
@@ -270,7 +270,50 @@ document.querySelector(".language").innerHTML="中文";
 }
 
 }
+    
+function registerUser() {
 
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("emailReg").value;
+    const password = document.getElementById("passReg").value;
+
+    if(name==="" || phone==="" || email==="" || password===""){
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    localStorage.setItem("walletName", name);
+    localStorage.setItem("walletPhone", phone);
+    localStorage.setItem("walletEmail", email);
+    localStorage.setItem("walletPassword", password);
+
+    alert("Account created successfully!");
+
+    showPage("login");
+}
+
+
+function loginUser(){
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const savedEmail = localStorage.getItem("walletEmail");
+    const savedPassword = localStorage.getItem("walletPassword");
+
+    if(email===savedEmail && password===savedPassword){
+
+        alert("Login Successful!");
+
+    }else{
+
+        alert("Incorrect email or password.");
+
+    }
+
+}
+    
 </script>
 
 
