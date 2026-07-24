@@ -169,7 +169,35 @@ Back
 
 </div>
 
+<!-- DASHBOARD -->
 
+<div id="dashboard" class="container page">
+
+<h2 id="dashboardTitle">My Wallet</h2>
+
+<h3 id="welcomeUser">Welcome</h3>
+
+<p><strong>Balance:</strong></p>
+
+<h1 id="balance">₦0.00</h1>
+
+<button onclick="alert('Deposit feature coming soon')">
+Deposit
+</button>
+
+<button onclick="alert('Withdraw feature coming soon')">
+Withdraw
+</button>
+
+<button onclick="alert('Transfer feature coming soon')">
+Transfer
+</button>
+
+<button onclick="logoutUser()">
+Logout
+</button>
+
+</div>
 
 <script>
 
@@ -301,6 +329,27 @@ if(password !== confirm){
 
 
 function loginUser(){
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const savedEmail = localStorage.getItem("walletEmail");
+    const savedPassword = localStorage.getItem("walletPassword");
+
+    if(email === savedEmail && password === savedPassword){
+
+        document.getElementById("welcomeUser").innerHTML =
+        "Welcome, " + localStorage.getItem("walletName");
+
+        showPage("dashboard");
+
+    } else {
+
+        alert("Incorrect email or password.");
+
+    }
+
+}
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
