@@ -201,15 +201,6 @@ Logout
 
 <script>
 
-function loginUser(){
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    alert("Login button is working");
-
-}
-    
 let chinese = false;
 
 
@@ -339,10 +330,6 @@ if(password !== confirm){
 
 function loginUser(){
 
-    <button id="loginSubmit" onclick="loginUser()">
-Login
-</button>
-    
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -364,27 +351,7 @@ Login
 
 }
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const savedEmail = localStorage.getItem("walletEmail");
-    const savedPassword = localStorage.getItem("walletPassword");
-
-    if(email===savedEmail && password===savedPassword){
-
-        document.getElementById("welcomeUser").innerHTML =
-"Welcome, " + localStorage.getItem("walletName");
-
-showPage("dashboard");
-
-    }else{
-
-        alert("Incorrect email or password.");
-
-    }
-
-}
-
+    
   function logoutUser(){
 
 showPage("home");
