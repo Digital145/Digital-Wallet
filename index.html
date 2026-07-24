@@ -273,16 +273,21 @@ document.querySelector(".language").innerHTML="中文";
     
 function registerUser() {
 
+    const confirm = document.getElementById("confirm").value;
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("emailReg").value;
     const password = document.getElementById("passReg").value;
 
-    if(name==="" || phone==="" || email==="" || password===""){
-        alert("Please fill in all fields.");
-        return;
-    }
+    if(name==="" || phone==="" || email==="" || password==="" || confirm===""){
+    alert("Please fill in all fields.");
+    return;
+}
 
+if(password !== confirm){
+    alert("Passwords do not match.");
+    return;
+}
     localStorage.setItem("walletName", name);
     localStorage.setItem("walletPhone", phone);
     localStorage.setItem("walletEmail", email);
