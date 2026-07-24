@@ -1,26 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Wallet</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Wallet</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+}
+
+header {
+    background:#004c99;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container {
+    background:white;
+    width:320px;
+    padding:30px;
+    margin:50px auto;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align:center;
+    color:#004c99;
+}
+
+input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+button {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.language {
+    width:150px;
+    margin:20px auto;
+    display:block;
+    background:#004c99;
+}
+
+.page {
+    display:none;
+}
+
+.active {
+    display:block;
+}
+</style>
+
 </head>
+
+
 <body>
 
 <header>
-    <h1>Digital Wallet</h1>
+<h1 id="title">Digital Wallet</h1>
 </header>
 
-<div class="container">
-    <h2>Welcome to Digital Wallet</h2>
 
-    <p>Your trusted digital wallet platform.</p>
+<button class="language" onclick="changeLanguage()">
+中文
+</button>
 
-    <button onclick="window.location.href='login.html'">Login</button>
 
-    <button onclick="window.location.href='register.html'">Register</button>
+<!-- HOME -->
+
+<div id="home" class="container page active">
+
+<h2 id="welcome">
+Welcome to Digital Wallet
+</h2>
+
+<p id="description">
+Your trusted digital wallet platform.
+</p>
+
+
+<button onclick="showPage('login')" id="loginBtn">
+Login
+</button>
+
+
+<button onclick="showPage('register')" id="registerBtn">
+Register
+</button>
+
 </div>
+
+
+
+<!-- LOGIN -->
+
+<div id="login" class="container page">
+
+<h2 id="loginTitle">
+Login
+</h2>
+
+
+<input id="email" type="email" placeholder="Email Address">
+
+<input id="password" type="password" placeholder="Password">
+
+
+<button id="loginSubmit">
+Login
+</button>
+
+
+<button onclick="showPage('home')" id="backLogin">
+Back
+</button>
+
+</div>
+
+
+
+<!-- REGISTER -->
+
+<div id="register" class="container page">
+
+<h2 id="createAccount">
+Create Your Account
+</h2>
+
+
+<input id="name" type="text" placeholder="Full Name">
+
+<input id="phone" type="tel" placeholder="Phone Number">
+
+<input id="emailReg" type="email" placeholder="Email Address">
+
+<input id="passReg" type="password" placeholder="Password">
+
+<input id="confirm" type="password" placeholder="Confirm Password">
+
+
+<button id="createBtn">
+Create Account
+</button>
+
+
+<button onclick="showPage('home')" id="backRegister">
+Back
+</button>
+
+
+</div>
+
+
+
+<script>
+
+let chinese = false;
+
+
+function showPage(page){
+
+document.getElementById("home").classList.remove("active");
+document.getElementById("login").classList.remove("active");
+document.getElementById("register").classList.remove("active");
+
+document.getElementById(page).classList.add("active");
+
+}
+
+
+
+function changeLanguage(){
+
+chinese = !chinese;
+
+
+if(chinese){
+
+document.getElementById("title").innerHTML="数字钱包";
+
+document.getElementById("welcome").innerHTML="欢迎使用数字钱包";
+
+document.getElementById("description").innerHTML="您可信赖的数字钱包平台";
+
+document.getElementById("loginBtn").innerHTML="登录";
+
+document.getElementById("registerBtn").innerHTML="注册";
+
+document.getElementById("loginTitle").innerHTML="登录";
+
+document.getElementById("loginSubmit").innerHTML="登录";
+
+document.getElementById("createAccount").innerHTML="创建您的账户";
+
+document.getElementById("createBtn").innerHTML="创建账户";
+
+document.getElementById("backLogin").innerHTML="返回";
+
+document.getElementById("backRegister").innerHTML="返回";
+
+document.getElementById("name").placeholder="姓名";
+
+document.getElementById("phone").placeholder="电话号码";
+
+document.getElementById("emailReg").placeholder="电子邮箱";
+
+document.getElementById("passReg").placeholder="密码";
+
+document.getElementById("confirm").placeholder="确认密码";
+
+document.querySelector(".language").innerHTML="English";
+
+}
+
+else{
+
+document.getElementById("title").innerHTML="Digital Wallet";
+
+document.getElementById("welcome").innerHTML="Welcome to Digital Wallet";
+
+document.getElementById("description").innerHTML="Your trusted digital wallet platform.";
+
+document.getElementById("loginBtn").innerHTML="Login";
+
+document.getElementById("registerBtn").innerHTML="Register";
+
+document.getElementById("loginTitle").innerHTML="Login";
+
+document.getElementById("loginSubmit").innerHTML="Login";
+
+document.getElementById("createAccount").innerHTML="Create Your Account";
+
+document.getElementById("createBtn").innerHTML="Create Account";
+
+document.getElementById("backLogin").innerHTML="Back";
+
+document.getElementById("backRegister").innerHTML="Back";
+
+document.getElementById("name").placeholder="Full Name";
+
+document.getElementById("phone").placeholder="Phone Number";
+
+document.getElementById("emailReg").placeholder="Email Address";
+
+document.getElementById("passReg").placeholder="Password";
+
+document.getElementById("confirm").placeholder="Confirm Password";
+
+document.querySelector(".language").innerHTML="中文";
+
+}
+
+}
+
+</script>
+
 
 </body>
 </html>
