@@ -181,6 +181,7 @@ function showPage(page){
 document.getElementById("home").classList.remove("active");
 document.getElementById("login").classList.remove("active");
 document.getElementById("register").classList.remove("active");
+document.getElementById("dashboard").classList.remove("active");
 
 document.getElementById(page).classList.add("active");
 
@@ -309,7 +310,10 @@ function loginUser(){
 
     if(email===savedEmail && password===savedPassword){
 
-        alert("Login Successful!");
+        document.getElementById("welcomeUser").innerHTML =
+"Welcome, " + localStorage.getItem("walletName");
+
+showPage("dashboard");
 
     }else{
 
@@ -318,6 +322,12 @@ function loginUser(){
     }
 
 }
+
+  function logoutUser(){
+
+showPage("home");
+
+}  
     
 </script>
 
